@@ -1,0 +1,615 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Mục lục &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'thu_muc';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chương 1: Giới thiệu" href="chapter1.html" />
+    <link rel="prev" title="Trực quan hóa dữ liệu trong Jupyter Book" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="My sample book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Trực quan hóa dữ liệu trong Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Mục lục</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter1.html">Chương 1: Giới thiệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Chương 2: Cài đặt Môi Trường</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_introduction.html">Chương 3: Giới thiệu về Dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="descriptive_statistics.html">Chương 4: Thống kê mô tả</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib_visualization.html">Chương 5: Trực quan hóa Dữ liệu với Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seaborn_visualization.html">Chương 6: Trực quan hóa Dữ liệu với Seaborn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotly_visualization.html">Chương 7: Trực quan hóa Dữ liệu với Plotly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced_visualization.html">Chương 8: Các Kỹ thuật Trực quan hóa Nâng cao</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_in_projects.html">Chương 9: Tích hợp Trực quan hóa vào Bài tập</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">Chương 10: Tài nguyên và Tài liệu tham khảo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fthu_muc.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/thu_muc.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Mục lục</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="muc-luc">
+<h1>Mục lục<a class="headerlink" href="#muc-luc" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="chapter1.html"><span class="std std-doc">Chương 1: Giới thiệu</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="chapter1.html#muc-tieu-cua-cuon-sach"><span class="std std-ref">1.1: Mục Tiêu Của Cuốn Sách</span></a></p></li>
+<li><p><a class="reference internal" href="chapter1.html#loi-ich-cua-truc-quan-hoa-du-lieu"><span class="std std-ref">1.2: Lợi ích của trực quan hóa dữ liệu</span></a></p></li>
+<li><p><a class="reference internal" href="chapter1.html#vi-sao-chon-python-cho-truc-quan-hoa-du-lieu"><span class="std std-ref">1.3: Vì sao chọn python cho trực quan hóa dữ liệu</span></a></p></li>
+<li><p><a class="reference internal" href="chapter1.html#tong-quan-ve-cac-chuong"><span class="std std-ref">1.4: Tổng quan về các chương</span></a></p></li>
+<li><p><a class="reference internal" href="chapter1.html#cach-su-dung-cuon-sach"><span class="std std-ref">1.5: Cách sử dụng cuốn sách</span></a></p></li>
+<li><p><a class="reference internal" href="chapter1.html#cac-linh-vuc-ung-dung-cua-truc-quan-hoa-du-lieu"><span class="std std-ref">1.6 Các lĩnh vực ứng dụng của trực quan hóa dữ liệu</span></a></p></li>
+<li><p><a class="reference internal" href="chapter1.html#thuc-hanh-va-ung-dung"><span class="std std-ref">1.7 Thực hành và ứng dụng</span></a></p></li>
+<li><p><a class="reference internal" href="chapter1.html#so-sanh-cac-cong-cu-truc-quan-hoa"><span class="std std-ref">1.8 So sánh các công cụ trực quan hóa</span></a></p></li>
+<li><p><a class="reference internal" href="chapter1.html#tuong-lai-cua-truc-quan-hoa-du-lieu"><span class="std std-ref">1.9 Tương lai của trực quan hóa dữ liệu</span></a></p></li>
+<li><p><a class="reference internal" href="chapter1.html#tong-ket-chuong-1"><span class="std std-ref">1.10 Tổng kết chương 1</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="installation.html"><span class="std std-doc">Chương 2: Cài đặt Môi trường</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="installation.html#lua-chon-moi-truong-phat-trien"><span class="std std-ref">2.1 Lựa chọn môi trường phát triển</span></a></p></li>
+<li><p><a class="reference internal" href="installation.html#cai-dat-python"><span class="std std-ref">2.2 Cài đặt Python</span></a></p></li>
+<li><p><a class="reference internal" href="installation.html#cai-dat-jupyter-notebook"><span class="std std-ref">2.3 Cài đặt Jupyter Notebook</span></a></p></li>
+<li><p><a class="reference internal" href="installation.html#cai-đặt-các-thư-viện-cần-thiết"><span class="std std-ref">2.4 Cài đặt các thư viện cần thiết</span></a></p></li>
+<li><p><a class="reference internal" href="installation.html#kiem-tra-moi-truong"><span class="std std-ref">2.5 Kiểm tra môi trường</span></a></p></li>
+<li><p><a class="reference internal" href="installation.html#mot-so-luu-y"><span class="std std-ref">2.6 Một số lưu ý</span></a></p></li>
+<li><p><a class="reference internal" href="installation.html#tong-ket-chuong-2"><span class="std std-ref">2.7 Tổng kết chương 2</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="data_introduction.html"><span class="std std-doc">Chương 3: Giới thiệu về Dữ liệu</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="data_introduction.html#du-lieu-la-gi"><span class="std std-ref">3.1 Dữ liệu là gì?</span></a></p></li>
+<li><p><a class="reference internal" href="data_introduction.html#cac-nguon-du-lieu-pho-bien"><span class="std std-ref">3.2 Các nguồn dữ liệu phổ biến</span></a></p></li>
+<li><p><a class="reference internal" href="data_introduction.html#cach-lam-viec-voi-du-lieu-trong-python"><span class="std std-ref">3.3 Cách làm việc với dữ liệu trong Python</span></a></p></li>
+<li><p><a class="reference internal" href="data_introduction.html#lam-sach-du-lieu"><span class="std std-ref">3.4 Làm sạch dữ liệu</span></a></p></li>
+<li><p><a class="reference internal" href="data_introduction.html#tong-hop-du-lieu"><span class="std std-ref">3.5 Tổng hợp dữ liệu</span></a></p></li>
+<li><p><a class="reference internal" href="data_introduction.html#xuat-du-lieu"><span class="std std-ref">3.6 Xuất dữ liệu</span></a></p></li>
+<li><p><a class="reference internal" href="data_introduction.html#cac-loai-du-lieu-nang-cao"><span class="std std-ref">3.7 Các loại dữ liệu nâng cao</span></a></p></li>
+<li><p><a class="reference internal" href="data_introduction.html#cac-cong-cu-va-phan-mem-ho-tro-lam-viec-voi-du-lieu"><span class="std std-ref">3.8 Các công cụ và phần mềm hỗ trợ làm việc với dữ liệu</span></a></p></li>
+<li><p><a class="reference internal" href="data_introduction.html#cac-phuong-phap-phan-tich-du-lieu"><span class="std std-ref">3.9 Các phương pháp phân tích dữ liệu</span></a></p></li>
+<li><p><a class="reference internal" href="data_introduction.html#thuc-hanh-nang-cao"><span class="std std-ref">3.10 Thực hành nâng cao</span></a></p></li>
+<li><p><a class="reference internal" href="data_introduction.html#cac-thach-thuc-trong-lam-viec-voi-du-lieu"><span class="std std-ref">3.11 Các thách thức trong làm việc với dữ liệu</span></a></p></li>
+<li><p><a class="reference internal" href="data_introduction.html#tuong-lai-cua-du-lieu"><span class="std std-ref">3.12 Tương lai của dữ liệu</span></a></p></li>
+<li><p><a class="reference internal" href="data_introduction.html#thuc_hanhhanh"><span class="std std-ref">3.13 Thực hành</span></a></p></li>
+<li><p><a class="reference internal" href="data_introduction.html#tong_ket_chuong_3"><span class="std std-ref">3.14 Tổng kết chương 3</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="descriptive_statistics.html"><span class="std std-doc">Chương 4: Thống kê mô tả</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="descriptive_statistics.html#thong-ke-mo-ta-la-gi"><span class="std std-ref">4.1 Thống kê mô tả là gì?</span></a></p></li>
+<li><p><a class="reference internal" href="descriptive_statistics.html#cac-chi-so-trung-tam"><span class="std std-ref">4.2 Các chỉ số trung tâm</span></a></p></li>
+<li><p><a class="reference internal" href="descriptive_statistics.html#cac-chi-so-phan-tan"><span class="std std-ref">4.3 Các chỉ số phân tán</span></a></p></li>
+<li><p><a class="reference internal" href="descriptive_statistics.html#hinh-dang-phan-phoi"><span class="std std-ref">4.4 Hình dạng phân phối</span></a></p></li>
+<li><p><a class="reference internal" href="descriptive_statistics.html#tom-tat-du-lieu-bang-pandas"><span class="std std-ref">4.5 Tóm tắt dữ liệu bằng Pandas</span></a></p></li>
+<li><p><a class="reference internal" href="descriptive_statistics.html#truc-quan-hoa-thong-ke-mo-ta"><span class="std std-ref">4.6 Trực quan hóa thống kê mô tả</span></a></p></li>
+<li><p><a class="reference internal" href="descriptive_statistics.html#thuc-hanh"><span class="std std-ref">4.7 Thực hành</span></a></p></li>
+<li><p><a class="reference internal" href="descriptive_statistics.html#thuc-tien-ung-dung-cua-thong-ke-mo-tata"><span class="std std-ref">4.8 Thực tiễn ứng dụng của thống kê mô tả</span></a></p></li>
+<li><p><a class="reference internal" href="descriptive_statistics.html#nhung-sai-lam-thuong-gapgap"><span class="std std-ref">4.9 Những sai lầm thường gặp</span></a></p></li>
+<li><p><a class="reference internal" href="descriptive_statistics.html#so-sanh-thong-ke-suy-diendien"><span class="std std-ref">4.10 So sánh với thống kê suy diễn</span></a></p></li>
+<li><p><a class="reference internal" href="descriptive_statistics.html#cong-cu-và-thu-vien"><span class="std std-ref">4.11 Công cụ và thư viện</span></a></p></li>
+<li><p><a class="reference internal" href="descriptive_statistics.html#nghien-cuu-dien-hinhhinh"><span class="std std-ref">4.12 Nghiên cứu điển hình</span></a></p></li>
+<li><p><a class="reference internal" href="descriptive_statistics.html#tong-ket-chuong-4"><span class="std std-ref">4.13 Tổng kết chương 4</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="matplotlib_visualization.html"><span class="std std-doc">Chương 5: Trực quan hóa Dữ liệu với Matplotlib</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="matplotlib_visualization.html#gioi_thieu_ve_matplotlib"><span class="std std-ref">5.1 Giới thiệu về Matplotlib</span></a></p></li>
+<li><p><a class="reference internal" href="matplotlib_visualization.html#bieu-do-co-ban-voi-matplotlib"><span class="std std-ref">5.2 Biểu đồ cơ bản với Matplotlib</span></a></p></li>
+<li><p><a class="reference internal" href="matplotlib_visualization.html#tuy-chinh-bieu-do"><span class="std std-ref">5.3 Tùy chỉnh biểu đồ</span></a></p></li>
+<li><p><a class="reference internal" href="matplotlib_visualization.html#su-dung-object-oriented-api"><span class="std std-ref">5.4 Sử dụng Object-Oriented API</span></a></p></li>
+<li><p><a class="reference internal" href="matplotlib_visualization.html#truc-quan-hoa-nhieu-bieu-do"><span class="std std-ref">5.5 Trực quan hóa nhiều biểu đồ</span></a></p></li>
+<li><p><a class="reference internal" href="matplotlib_visualization.html#luu-bieu-do"><span class="std std-ref">5.6 Lưu biểu đồ</span></a></p></li>
+<li><p><a class="reference internal" href="matplotlib_visualization.html#thuc-hanh"><span class="std std-ref">5.7 Thực hành</span></a></p></li>
+<li><p><a class="reference internal" href="matplotlib_visualization.html#tong-ket-chuong-5"><span class="std std-ref">5.8 Tổng kết chương 5</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="seaborn_visualization.html"><span class="std std-doc">Chương 6: Trực quan hóa Dữ liệu với Seaborn</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="seaborn_visualization.html#gioi-thieu-ve-seaborn"><span class="std std-ref">6.1 Giới thiệu về Seaborn</span></a></p></li>
+<li><p><a class="reference internal" href="seaborn_visualization.html#cac-bieu-do-co-ban-voi-seaborn"><span class="std std-ref">6.2 Các biểu đồ cơ bản với Seaborn</span></a></p></li>
+<li><p><a class="reference internal" href="seaborn_visualization.html#cac-bieu-do-nang-cao"><span class="std std-ref">6.3 Các biểu đồ nâng cao</span></a></p></li>
+<li><p><a class="reference internal" href="seaborn_visualization.html#tuy-chinh-va-cai-dat-giao-dien"><span class="std std-ref">6.4 Tùy chỉnh và cài đặt giao diện</span></a></p></li>
+<li><p><a class="reference internal" href="seaborn_visualization.html#luu-bieu-do"><span class="std std-ref">6.5 Lưu biểu đồ</span></a></p></li>
+<li><p><a class="reference internal" href="seaborn_visualization.html#thuc-hanh"><span class="std std-ref">6.6 Thực hành</span></a></p></li>
+<li><p><a class="reference internal" href="seaborn_visualization.html#tong-ket-chuong-6"><span class="std std-ref">6.7 Tổng kết chương 6</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="plotly_visualization.html"><span class="std std-doc">Chương 7: Trực quan hóa Dữ liệu với Plotly</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="plotly_visualization.html#gioi-thieu-ve-plotly"><span class="std std-ref">7.1 Giới thiệu về Plotly</span></a></p></li>
+<li><p><a class="reference internal" href="plotly_visualization.html#tao-bieu-do-co-ban-voi-plotly"><span class="std std-ref">7.2 Tạo Biểu Đồ Cơ Bản với Plotly</span></a></p></li>
+<li><p><a class="reference internal" href="plotly_visualization.html#cac-bieu-do-tuong-tac"><span class="std std-ref">7.3 Các Biểu Đồ Tương Tác</span></a></p></li>
+<li><p><a class="reference internal" href="plotly_visualization.html#tuy-chinh-bieu-do"><span class="std std-ref">7.4 Tùy chỉnh Biểu Đồ</span></a></p></li>
+<li><p><a class="reference internal" href="plotly_visualization.html#tao-bieu-do-nang-cao"><span class="std std-ref">7.5 Tạo Biểu Đồ Nâng Cao</span></a></p></li>
+<li><p><a class="reference internal" href="plotly_visualization.html#xuat-va-chia-se-bieu-do"><span class="std std-ref">7.6 Xuất và Chia Sẻ Biểu Đồ</span></a></p></li>
+<li><p><a class="reference internal" href="plotly_visualization.html#cac-vi-du-thuc-te"><span class="std std-ref">7.7 Các Ví Dụ Thực Tế</span></a></p></li>
+<li><p><a class="reference internal" href="plotly_visualization.html#tai-lieu-tham-khao"><span class="std std-ref">7.8 Tài liệu tham khảo</span></a></p></li>
+<li><p><a class="reference internal" href="plotly_visualization.html#tong-ket-chuong-7"><span class="std std-ref">7.9 Tổng kết chương 7</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="advanced_visualization.html"><span class="std std-doc">Chương 8: Các Kỹ thuật Trực quan hóa Nâng cao</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="advanced_visualization.html#gioi-thieu-ve-ky-thuat-truc-quan-hoa-nang-cao"><span class="std std-ref">8.1 Giới thiệu về Kỹ thuật Trực quan hóa Nâng cao</span></a></p></li>
+<li><p><a class="reference internal" href="advanced_visualization.html#truc-quan-hoa-du-lieu-3d"><span class="std std-ref">8.2 Trực quan hóa Dữ liệu 3D</span></a></p></li>
+<li><p><a class="reference internal" href="advanced_visualization.html#heatmaps-va-bieu-do-ma-tran"><span class="std std-ref">8.3 Heatmaps và Biểu đồ Ma trận</span></a></p></li>
+<li><p><a class="reference internal" href="advanced_visualization.html#network-graphs-bieu-do-mang"><span class="std std-ref">8.4 Network Graphs (Biểu đồ Mạng)</span></a></p></li>
+<li><p><a class="reference internal" href="advanced_visualization.html#tuy-chinh-va-ket-hop-bieu-do"><span class="std std-ref">8.5 Tùy chỉnh và Kết hợp Biểu đồ</span></a></p></li>
+<li><p><a class="reference internal" href="advanced_visualization.html#luu-tru-va-chia-se-bieu-do"><span class="std std-ref">8.6 Lưu trữ và Chia sẻ Biểu đồ</span></a></p></li>
+<li><p><a class="reference internal" href="advanced_visualization.html#bai-tap-thuc-hanh"><span class="std std-ref">8.7 Bài tập Thực hành</span></a></p></li>
+<li><p><a class="reference internal" href="advanced_visualization.html#tong-ket-chuong-8"><span class="std std-ref">8.8 Tổng kết chương 8</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="visualization_in_projects.html"><span class="std std-doc">Chương 9: Tích hợp Trực quan hóa vào Bài tập</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="visualization_in_projects.html#gioi-thieu-ve-tich-hop-truc-quan-hoa"><span class="std std-ref">9.1 Giới thiệu về Tích hợp Trực quan hóa</span></a></p></li>
+<li><p><a class="reference internal" href="visualization_in_projects.html#tich-hop-bieu-do-vao-bao-cao-word-hoac-pdf"><span class="std std-ref">9.2 Tích hợp Biểu đồ vào Báo cáo Word hoặc PDF</span></a></p></li>
+<li><p><a class="reference internal" href="visualization_in_projects.html#tich-hop-bieu-do-vao-jupyter-notebook"><span class="std std-ref">9.3 Tích hợp Biểu đồ vào Jupyter Notebook</span></a></p></li>
+<li><p><a class="reference internal" href="visualization_in_projects.html#xay-dung-bao-cao-truc-quan"><span class="std std-ref">9.4 Xây dựng Báo cáo Trực quan</span></a></p></li>
+<li><p><a class="reference internal" href="visualization_in_projects.html#ung-dung-truc-quan-hoa-trong-thuyet-trinh"><span class="std std-ref">9.5 Ứng dụng Trực quan hóa trong Thuyết trình</span></a></p></li>
+<li><p><a class="reference internal" href="visualization_in_projects.html#bai-tap-thuc-hanh"><span class="std std-ref">9.6 Bài tập Thực hành</span></a></p></li>
+<li><p><a class="reference internal" href="visualization_in_projects.html#huong-dan-tich-hop-vao-cac-du-an-lon"><span class="std std-ref">9.7 Hướng dẫn Tích hợp vào Các Dự án Lớn</span></a></p></li>
+<li><p><a class="reference internal" href="visualization_in_projects.html#ket-luan"><span class="std std-ref">9.8 Kết luận</span></a></p></li>
+<li><p><a class="reference internal" href="visualization_in_projects.html#tong-ket-chuong-9"><span class="std std-ref">9.9 Tổng kết chương 9</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="references.html"><span class="std std-doc">Chương 10: Tài nguyên và Tài liệu tham khảo</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="references.html#sach-ve-du-lieu-hoa-hoc-truc-quan"><span class="std std-ref">10.1 Sách về Dữ liệu hóa học trực quan</span></a></p></li>
+<li><p><a class="reference internal" href="references.html#khoa-hoc-truc-tuyen"><span class="std std-ref">10.2 Khóa học trực tuyến</span></a></p></li>
+<li><p><a class="reference internal" href="references.html#trang-web-va-blog"><span class="std std-ref">10.3 Trang web và Blog</span></a></p></li>
+<li><p><a class="reference internal" href="references.html#cong-cu-va-thu-vien"><span class="std std-ref">10.4 Công cụ và Thư viện</span></a></p></li>
+<li><p><a class="reference internal" href="references.html#cac-cong-cu-ho-tro-khac"><span class="std std-ref">10.5 Các công cụ hỗ trợ khác</span></a></p></li>
+<li><p><a class="reference internal" href="references.html#tong-ket-chuong-10"><span class="std std-ref">10.6 Tổng Kết Chương 10</span></a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Trực quan hóa dữ liệu trong Jupyter Book</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="chapter1.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chương 1: Giới thiệu</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

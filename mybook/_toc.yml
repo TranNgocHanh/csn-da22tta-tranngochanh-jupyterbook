@@ -1,0 +1,18 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: thu_muc 
+- file: chapter1
+- file: installation
+- file: data_introduction
+- file: descriptive_statistics
+- file: matplotlib_visualization
+- file: seaborn_visualization
+- file: plotly_visualization
+- file: advanced_visualization
+- file: visualization_in_projects
+- file: references
+

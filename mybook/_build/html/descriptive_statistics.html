@@ -1,0 +1,775 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Chương 4: Thống kê mô tả &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'descriptive_statistics';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chương 5: Trực quan hóa Dữ liệu với Matplotlib" href="matplotlib_visualization.html" />
+    <link rel="prev" title="Chương 3: Giới thiệu về Dữ liệu" href="data_introduction.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="My sample book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Trực quan hóa dữ liệu trong Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="thu_muc.html">Mục lục</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter1.html">Chương 1: Giới thiệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Chương 2: Cài đặt Môi Trường</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_introduction.html">Chương 3: Giới thiệu về Dữ liệu</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chương 4: Thống kê mô tả</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib_visualization.html">Chương 5: Trực quan hóa Dữ liệu với Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seaborn_visualization.html">Chương 6: Trực quan hóa Dữ liệu với Seaborn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotly_visualization.html">Chương 7: Trực quan hóa Dữ liệu với Plotly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced_visualization.html">Chương 8: Các Kỹ thuật Trực quan hóa Nâng cao</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_in_projects.html">Chương 9: Tích hợp Trực quan hóa vào Bài tập</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">Chương 10: Tài nguyên và Tài liệu tham khảo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdescriptive_statistics.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/descriptive_statistics.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chương 4: Thống kê mô tả</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thong-ke-mo-ta">Thống kê mô tả</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thong-ke-mo-ta-la-gi">4.1 Thống kê mô tả là gì?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-chi-so-trung-tam">4.2 Các chỉ số trung tâm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-chi-so-phan-tan">4.3 Các chỉ số phân tán</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hinh-dang-phan-phoi">4.4 Hình dạng phân phối</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tom-tat-du-lieu-bang-pandas">4.5 Tóm tắt dữ liệu bằng Pandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#truc-quan-hoa-thong-ke-mo-ta">4.6 Trực quan hóa thống kê mô tả</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thuc-hanh">4.7 Thực hành</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thuc-tien-ung-dung-cua-thong-ke-mo-ta">4.8 Thực tiễn ứng dụng của thống kê mô tả</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nhung-sai-lam-thuong-gap">4.9 Những sai lầm thường gặp</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#so-sanh-voi-thong-ke-suy-dien">4.10 So sánh với thống kê suy diễn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cong-cu-va-thu-vien">4.11 Công cụ và thư viện</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nghien-cuu-dien-hinh">4.12 Nghiên cứu điển hình</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tong-ket-chuong-4">4.13 Tổng kết chương 4</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chuong-4-thong-ke-mo-ta">
+<h1>Chương 4: Thống kê mô tả<a class="headerlink" href="#chuong-4-thong-ke-mo-ta" title="Permalink to this heading">#</a></h1>
+<section id="thong-ke-mo-ta">
+<h2>Thống kê mô tả<a class="headerlink" href="#thong-ke-mo-ta" title="Permalink to this heading">#</a></h2>
+<p>Thống kê mô tả là bước đầu tiên trong phân tích dữ liệu, tập trung vào việc tóm tắt và mô tả các đặc điểm cơ bản của dữ liệu. Việc sử dụng thống kê mô tả giúp hiểu rõ hơn về cấu trúc và xu hướng của dữ liệu trước khi tiến hành các phân tích sâu hơn.</p>
+</section>
+<section id="thong-ke-mo-ta-la-gi">
+<h2>4.1 Thống kê mô tả là gì?<a class="headerlink" href="#thong-ke-mo-ta-la-gi" title="Permalink to this heading">#</a></h2>
+<p>Thống kê mô tả bao gồm:</p>
+<ul class="simple">
+<li><p><strong>Các chỉ số trung tâm</strong> (Central Tendency): Trung bình, trung vị, mode.</p></li>
+<li><p><strong>Các chỉ số phân tán</strong> (Dispersion): Độ lệch chuẩn, phương sai, khoảng giá trị.</p></li>
+<li><p><strong>Các chỉ số hình dạng phân phối</strong>: Độ lệch (Skewness) và độ nhọn (Kurtosis).</p></li>
+</ul>
+</section>
+<section id="cac-chi-so-trung-tam">
+<h2>4.2 Các chỉ số trung tâm<a class="headerlink" href="#cac-chi-so-trung-tam" title="Permalink to this heading">#</a></h2>
+<p><strong>4.2.1 Mean (Trung bình):</strong>
+Là giá trị trung bình cộng của tất cả các giá trị trong tập dữ liệu.</p>
+<ul class="simple">
+<li><p>Cách tính:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean:&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Giải thích:</strong></p>
+<ul class="simple">
+<li><p>np.mean(data): Tính giá trị trung bình của tập dữ liệu. Trong ví dụ này, giá trị trung bình là (1 + 2 + 3 + 4 + 5) / 5 = 3.</p></li>
+</ul>
+<p><strong>4.2.2 Median (Trung vị):</strong></p>
+<p>Là giá trị nằm ở giữa tập dữ liệu khi sắp xếp theo thứ tự tăng dần.</p>
+<ul class="simple">
+<li><p>Cách tính:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">median</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Median:&quot;</span><span class="p">,</span> <span class="n">median</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Giải thích:</strong></p>
+<ul class="simple">
+<li><p>np.median(data): Trả về giá trị ở giữa danh sách sau khi sắp xếp. Trong ví dụ trên, giá trị trung vị là 3.</p></li>
+</ul>
+<p><strong>4.2.3 Mode (Mode - Giá trị xuất hiện nhiều nhất):</strong></p>
+<ul class="simple">
+<li><p>Cách tính:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+
+<span class="n">mode</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mode:&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Giải thích:</strong></p>
+<ul class="simple">
+<li><p>stats.mode(data): Tính giá trị xuất hiện nhiều nhất. Nếu tất cả các giá trị có số lần xuất hiện bằng nhau, mode sẽ trả về giá trị đầu tiên.</p></li>
+</ul>
+</section>
+<section id="cac-chi-so-phan-tan">
+<h2>4.3 Các chỉ số phân tán<a class="headerlink" href="#cac-chi-so-phan-tan" title="Permalink to this heading">#</a></h2>
+<p><strong>4.3.1 Range (Khoảng giá trị):</strong></p>
+<p>Hiệu số giữa giá trị lớn nhất và nhỏ nhất.</p>
+<ul class="simple">
+<li><p>Cách tính:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">range_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ptp</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Range:&quot;</span><span class="p">,</span> <span class="n">range_value</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Giải thích:</strong></p>
+<ul class="simple">
+<li><p>np.ptp(data): Trả về giá trị chênh lệch giữa giá trị lớn nhất và nhỏ nhất trong dữ liệu. Ví dụ: (5 - 1) = 4.</p></li>
+</ul>
+<p><strong>4.3.2 Variance (Phương sai):</strong></p>
+<p>Đo lường mức độ phân tán của dữ liệu.</p>
+<ul class="simple">
+<li><p>Cách tính:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">variance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Variance:&quot;</span><span class="p">,</span> <span class="n">variance</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Giải thích:</strong></p>
+<ul class="simple">
+<li><p>np.var(data): Tính phương sai của tập dữ liệu, đo lường sự biến thiên của dữ liệu so với giá trị trung bình.</p></li>
+</ul>
+<p><strong>4.3.3 Standard Deviation (Độ lệch chuẩn):</strong></p>
+<p>Là căn bậc hai của phương sai, đo lường độ phân tán quanh giá trị trung bình.</p>
+<ul class="simple">
+<li><p>Cách tính:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">std_dev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Standard Deviation:&quot;</span><span class="p">,</span> <span class="n">std_dev</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Giải thích:</strong></p>
+<ul class="simple">
+<li><p>np.std(data): Tính độ lệch chuẩn của tập dữ liệu, cho biết mức độ phân tán</p></li>
+</ul>
+</section>
+<section id="hinh-dang-phan-phoi">
+<h2>4.4 Hình dạng phân phối<a class="headerlink" href="#hinh-dang-phan-phoi" title="Permalink to this heading">#</a></h2>
+<p><strong>4.4.1 Skewness (Độ lệch):</strong></p>
+<p>Cho biết sự không đối xứng của dữ liệu. Skewness &gt; 0: lệch phải, Skewness &lt; 0: lệch trái.</p>
+<ul class="simple">
+<li><p>Cách tính:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">skewness</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">skew</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Skewness:&quot;</span><span class="p">,</span> <span class="n">skewness</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Giải thích:</strong></p>
+<ul class="simple">
+<li><p>stats.skew(data): Tính độ lệch phân phối của dữ liệu. Nếu giá trị skewness &gt; 0, dữ liệu lệch phải, nếu skewness &lt; 0, dữ liệu lệch trái.</p></li>
+</ul>
+<p><strong>4.4.2 Kurtosis (Độ nhọn):</strong></p>
+<p>Đo lường “độ nhọn” của phân phối.</p>
+<ul class="simple">
+<li><p>Cách tính:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">kurtosis</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">kurtosis</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kurtosis:&quot;</span><span class="p">,</span> <span class="n">kurtosis</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Giải thích:</strong></p>
+<ul class="simple">
+<li><p>stats.kurtosis(data): Tính độ nhọn của phân phối. Giá trị kurtosis cao cho thấy phân phối có đỉnh nhọn hơn bình thường.</p></li>
+</ul>
+</section>
+<section id="tom-tat-du-lieu-bang-pandas">
+<h2>4.5 Tóm tắt dữ liệu bằng Pandas<a class="headerlink" href="#tom-tat-du-lieu-bang-pandas" title="Permalink to this heading">#</a></h2>
+<p>Pandas cung cấp một phương thức describe() để nhanh chóng tính toán các chỉ số thống kê mô tả cho tất cả các cột số trong DataFrame.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Tạo DataFrame</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Age&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">45</span><span class="p">],</span> <span class="s1">&#39;Salary&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50000</span><span class="p">,</span> <span class="mi">60000</span><span class="p">,</span> <span class="mi">75000</span><span class="p">,</span> <span class="mi">80000</span><span class="p">,</span> <span class="mi">90000</span><span class="p">]}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Tóm tắt dữ liệu</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+</pre></div>
+</div>
+<p><strong>Giải thích:</strong></p>
+<ul class="simple">
+<li><p>df.describe(): Tính toán các chỉ số thống kê mô tả như mean, std, min, max và các percentiles (25%, 50%, 75%) cho tất cả các cột số trong DataFrame.</p></li>
+</ul>
+</section>
+<section id="truc-quan-hoa-thong-ke-mo-ta">
+<h2>4.6 Trực quan hóa thống kê mô tả<a class="headerlink" href="#truc-quan-hoa-thong-ke-mo-ta" title="Permalink to this heading">#</a></h2>
+<p>Trực quan hóa các chỉ số thống kê mô tả giúp nhận diện xu hướng và sự phân bố dữ liệu.</p>
+<p><strong>4.6.1 Histogram (Biểu đồ tần suất):</strong></p>
+<p>Biểu đồ tần suất cho biết phân phối của một biến.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Histogram&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Values&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Frequency&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Giải thích:</strong></p>
+<ul class="simple">
+<li><p>plt.hist(data): Vẽ biểu đồ tần suất cho dữ liệu, chia thành 5 bins (ngăn). Trục x là giá trị, và trục y là tần suất xuất hiện của giá trị đó.</p></li>
+</ul>
+<p><strong>4.6.2 Boxplot (Biểu đồ hộp):</strong></p>
+<p>Boxplot giúp bạn nhận diện các giá trị ngoại lai (outliers) và phân bố dữ liệu.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Boxplot&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Giải thích:</strong></p>
+<ul class="simple">
+<li><p>plt.boxplot(data): Vẽ biểu đồ hộp, giúp trực quan hóa các chỉ số thống kê như trung vị, phần tư (quartiles) và ngoại lai (outliers).</p></li>
+</ul>
+<p><strong>4.6.3 Violin Plot:</strong>
+Violin Plot kết hợp cả Histogram và Boxplot, giúp bạn thấy rõ phân phối và các đặc điểm thống kê của dữ liệu.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Violin Plot&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Giải thích:</strong></p>
+<ul class="simple">
+<li><p>sns.violinplot(data): Vẽ Violin Plot, cho bạn thấy cả phân phối và các phần tử cơ bản của dữ liệu.</p></li>
+</ul>
+</section>
+<section id="thuc-hanh">
+<h2>4.7 Thực hành<a class="headerlink" href="#thuc-hanh" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Bài tập 1:</strong>
+Tạo một tập dữ liệu gồm 10 số ngẫu nhiên. Tính toán và hiển thị: Mean, Median, Mode, Variance, Standard Deviation, Skewness, và Kurtosis.</p></li>
+<li><p><strong>Bài tập 2:</strong>
+Sử dụng dữ liệu về chiều cao và cân nặng của 50 người, tạo biểu đồ Histogram và Boxplot để phân tích sự phân bố.</p></li>
+</ul>
+</section>
+<section id="thuc-tien-ung-dung-cua-thong-ke-mo-ta">
+<h2>4.8 Thực tiễn ứng dụng của thống kê mô tả<a class="headerlink" href="#thuc-tien-ung-dung-cua-thong-ke-mo-ta" title="Permalink to this heading">#</a></h2>
+<p>Thống kê mô tả có nhiều ứng dụng trong thực tế, bao gồm:</p>
+<ul class="simple">
+<li><p><strong>Phân tích thị trường</strong>: Sử dụng để hiểu rõ hơn về hành vi của người tiêu dùng.</p></li>
+<li><p><strong>Y tế</strong>: Giúp phân tích dữ liệu bệnh nhân và xu hướng sức khỏe.</p></li>
+<li><p><strong>Giáo dục</strong>: Đánh giá kết quả học tập và hiệu suất của học sinh.</p></li>
+</ul>
+</section>
+<section id="nhung-sai-lam-thuong-gap">
+<h2>4.9 Những sai lầm thường gặp<a class="headerlink" href="#nhung-sai-lam-thuong-gap" title="Permalink to this heading">#</a></h2>
+<p>Khi sử dụng thống kê mô tả, có một số sai lầm phổ biến mà người dùng cần lưu ý:</p>
+<ul class="simple">
+<li><p><strong>Chỉ dựa vào trung bình</strong>: Trung bình có thể bị ảnh hưởng bởi các giá trị ngoại lai.</p></li>
+<li><p><strong>Không xem xét độ phân tán</strong>: Chỉ nhìn vào các chỉ số trung tâm mà không xem xét độ phân tán có thể dẫn đến hiểu lầm về dữ liệu.</p></li>
+</ul>
+</section>
+<section id="so-sanh-voi-thong-ke-suy-dien">
+<h2>4.10 So sánh với thống kê suy diễn<a class="headerlink" href="#so-sanh-voi-thong-ke-suy-dien" title="Permalink to this heading">#</a></h2>
+<p>Thống kê mô tả chỉ tóm tắt và mô tả dữ liệu hiện có, trong khi thống kê suy diễn sử dụng mẫu dữ liệu để đưa ra kết luận về toàn bộ quần thể.</p>
+</section>
+<section id="cong-cu-va-thu-vien">
+<h2>4.11 Công cụ và thư viện<a class="headerlink" href="#cong-cu-va-thu-vien" title="Permalink to this heading">#</a></h2>
+<p>Một số công cụ và thư viện phổ biến để thực hiện thống kê mô tả trong Python bao gồm:</p>
+<ul class="simple">
+<li><p><strong>NumPy</strong>: Thư viện cơ bản cho các phép toán số học.</p></li>
+<li><p><strong>Pandas</strong>: Cung cấp các phương thức mạnh mẽ để phân tích và tóm tắt dữ liệu.</p></li>
+<li><p><strong>SciPy</strong>: Hỗ trợ các phép toán thống kê nâng cao.</p></li>
+</ul>
+</section>
+<section id="nghien-cuu-dien-hinh">
+<h2>4.12 Nghiên cứu điển hình<a class="headerlink" href="#nghien-cuu-dien-hinh" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Nghiên cứu về sức khỏe</strong>: Phân tích dữ liệu từ một nghiên cứu y tế để xác định các yếu tố ảnh hưởng đến sức khỏe cộng đồng.</p></li>
+<li><p><strong>Phân tích dữ liệu bán hàng</strong>: Sử dụng thống kê mô tả để hiểu rõ hơn về doanh thu và hành vi mua sắm của khách hàng.</p></li>
+</ul>
+</section>
+<section id="tong-ket-chuong-4">
+<h2>4.13 Tổng kết chương 4<a class="headerlink" href="#tong-ket-chuong-4" title="Permalink to this heading">#</a></h2>
+<p><strong>Nội dung</strong>: Trong chương 4 này đã giúp bạn nắm vững các chỉ số thống kê mô tả và cách áp dụng chúng vào dữ liệu thực tế. Trong chương 5 chúng ta sẽ bắt đầu với trực quan hóa dữ liệu bằng Matplotlib.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="data_introduction.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chương 3: Giới thiệu về Dữ liệu</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="matplotlib_visualization.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chương 5: Trực quan hóa Dữ liệu với Matplotlib</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thong-ke-mo-ta">Thống kê mô tả</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thong-ke-mo-ta-la-gi">4.1 Thống kê mô tả là gì?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-chi-so-trung-tam">4.2 Các chỉ số trung tâm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-chi-so-phan-tan">4.3 Các chỉ số phân tán</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hinh-dang-phan-phoi">4.4 Hình dạng phân phối</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tom-tat-du-lieu-bang-pandas">4.5 Tóm tắt dữ liệu bằng Pandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#truc-quan-hoa-thong-ke-mo-ta">4.6 Trực quan hóa thống kê mô tả</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thuc-hanh">4.7 Thực hành</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thuc-tien-ung-dung-cua-thong-ke-mo-ta">4.8 Thực tiễn ứng dụng của thống kê mô tả</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nhung-sai-lam-thuong-gap">4.9 Những sai lầm thường gặp</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#so-sanh-voi-thong-ke-suy-dien">4.10 So sánh với thống kê suy diễn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cong-cu-va-thu-vien">4.11 Công cụ và thư viện</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nghien-cuu-dien-hinh">4.12 Nghiên cứu điển hình</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tong-ket-chuong-4">4.13 Tổng kết chương 4</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
