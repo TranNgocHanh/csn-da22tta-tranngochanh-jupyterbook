@@ -1,0 +1,800 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Chương 6: Trực quan hóa Dữ liệu với Seaborn &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter6';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chương 7: Trực quan hóa Dữ liệu với Plotly" href="chapter7.html" />
+    <link rel="prev" title="Chương 5: Trực quan hóa Dữ liệu với Matplotlib" href="chapter5.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="My sample book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Trực quan hóa dữ liệu trong Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="thu_muc.html">Mục lục</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter1.html">Chương 1: Giới thiệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter2.html">Chương 2: Cài đặt Môi Trường</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter3.html">Chương 3: Giới thiệu về Dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter4.html">Chương 4: Thống kê mô tả</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter5.html">Chương 5: Trực quan hóa Dữ liệu với Matplotlib</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chương 6: Trực quan hóa Dữ liệu với Seaborn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter7.html">Chương 7: Trực quan hóa Dữ liệu với Plotly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter8.html">Chương 8: Các Kỹ thuật Trực quan hóa Nâng cao</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter9.html">Chương 9: Tích hợp Trực quan hóa vào Bài tập</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter10.html">Chương 10: Tài nguyên và Tài liệu tham khảo</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter6.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/chapter6.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chương 6: Trực quan hóa Dữ liệu với Seaborn</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#truc-quan-hoa-du-lieu-voi-seaborn">Trực quan hóa Dữ liệu với Seaborn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gioi-thieu-ve-seaborn">6.1 Giới thiệu về Seaborn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-bieu-do-co-ban-voi-seaborn">6.2 Các biểu đồ cơ bản với Seaborn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-bieu-do-nang-cao">6.3 Các biểu đồ nâng cao</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuy-chinh-va-cai-dat-giao-dien">6.4 Tùy chỉnh và cài đặt giao diện</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#luu-bieu-do">6.5 Lưu biểu đồ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thuc-hanh">6.6 Thực hành</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tong-ket-chuong-6">6.7 Tổng kết chương 6</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chuong-6-truc-quan-hoa-du-lieu-voi-seaborn">
+<h1>Chương 6: Trực quan hóa Dữ liệu với Seaborn<a class="headerlink" href="#chuong-6-truc-quan-hoa-du-lieu-voi-seaborn" title="Permalink to this heading">#</a></h1>
+<section id="truc-quan-hoa-du-lieu-voi-seaborn">
+<h2>Trực quan hóa Dữ liệu với Seaborn<a class="headerlink" href="#truc-quan-hoa-du-lieu-voi-seaborn" title="Permalink to this heading">#</a></h2>
+<p>Seaborn là một thư viện trực quan hóa dữ liệu mạnh mẽ, được xây dựng trên Matplotlib. Thư viện này cung cấp các biểu đồ nâng cao và giao diện đơn giản để làm việc với dữ liệu dạng bảng, đặc biệt khi tích hợp với pandas.</p>
+</section>
+<section id="gioi-thieu-ve-seaborn">
+<h2>6.1 Giới thiệu về Seaborn<a class="headerlink" href="#gioi-thieu-ve-seaborn" title="Permalink to this heading">#</a></h2>
+<p><strong>6.1.1 Cài đặt Seaborn</strong></p>
+<p>Để cài đặt Seaborn, sử dụng lệnh:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">seaborn</span>
+</pre></div>
+</div>
+<p><strong>6.1.2 Nhập thư viện và dữ liệu mẫu</strong></p>
+<p>Seaborn đi kèm với nhiều tập dữ liệu mẫu (datasets). Bạn có thể tải và sử dụng chúng để thực hành.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Tải dữ liệu mẫu</span>
+<span class="n">tips</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;tips&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tips</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.io</span> <span class="k">as</span> <span class="nn">pio</span>
+<span class="n">pio</span><span class="o">.</span><span class="n">renderers</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="s1">&#39;vscode&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="cac-bieu-do-co-ban-voi-seaborn">
+<h2>6.2 Các biểu đồ cơ bản với Seaborn<a class="headerlink" href="#cac-bieu-do-co-ban-voi-seaborn" title="Permalink to this heading">#</a></h2>
+<p><strong>6.2.1 Biểu đồ cột và phân phối</strong>
+Biểu đồ cột:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">FutureWarning</span><span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Category&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Category&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Values&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Biểu đồ Cột với Seaborn&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/6525e8a5a753ca98a6d335b8cb83c92b03ad3adedef4d1cf300672f912dc4bd7.png" src="_images/6525e8a5a753ca98a6d335b8cb83c92b03ad3adedef4d1cf300672f912dc4bd7.png" />
+</div>
+</div>
+<p>Biểu đồ phân phối:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">tips</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;tips&quot;</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">tips</span><span class="p">[</span><span class="s1">&#39;total_bill&#39;</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Histogram with KDE&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7450e7afc0c8a30a6237e5e3e7bde6c385ac6bc6e34af6d14ad2f99ace344648.png" src="_images/7450e7afc0c8a30a6237e5e3e7bde6c385ac6bc6e34af6d14ad2f99ace344648.png" />
+</div>
+</div>
+<p><strong>Chú thích:</strong></p>
+<ul class="simple">
+<li><p>Biểu đồ hiển thị phân phối hóa đơn total_bill trong tập dữ liệu. Đường KDE cho thấy mật độ xác suất của dữ liệu.</p></li>
+</ul>
+<p><strong>6.2.2 Biểu đồ hộp (Box Plot)</strong>
+Dùng để hiển thị phân phối và phát hiện giá trị ngoại lai.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([],</span> <span class="p">[],</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># Ẩn legend nếu không cần</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Box Plot&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/48ed8bc19b3bf03c07fd5f324cefe50c5a18b3c95424e521b1c118988422853a.png" src="_images/48ed8bc19b3bf03c07fd5f324cefe50c5a18b3c95424e521b1c118988422853a.png" />
+</div>
+</div>
+<p><strong>Chú thích:</strong></p>
+<ul class="simple">
+<li><p>Biểu đồ cho thấy phân phối giá trị total_bill theo các ngày trong tuần (day). Các giá trị ngoài dải (outliers) được biểu thị bằng các dấu chấm.</p></li>
+</ul>
+<p><strong>6.2.3 Biểu đồ tán xạ (Scatter Plot)</strong>
+Dùng để hiển thị mối quan hệ giữa hai biến.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;tip&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Scatter Plot&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/112429292b3c969cd522040965c07df6898f1e44b614b23f82c87db092c19351.png" src="_images/112429292b3c969cd522040965c07df6898f1e44b614b23f82c87db092c19351.png" />
+</div>
+</div>
+<p><strong>Chú thích:</strong></p>
+<ul class="simple">
+<li><p>Biểu đồ này cho thấy mối quan hệ giữa tổng hóa đơn (total_bill) và tiền tip (tip) theo từng ngày. Các màu sắc khác nhau đại diện cho các ngày trong tuần.</p></li>
+</ul>
+<p><strong>6.2.4 Biểu đồ thanh (Bar Plot)</strong>
+Dùng để hiển thị giá trị trung bình của một biến theo nhóm.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span> <span class="n">errorbar</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;muted&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Bar Plot&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/80853864ad3ea3cb337951cdfb64b4557b106d8249875a46c787bb0e28cb2828.png" src="_images/80853864ad3ea3cb337951cdfb64b4557b106d8249875a46c787bb0e28cb2828.png" />
+</div>
+</div>
+<p><strong>Chú thích:</strong></p>
+<ul class="simple">
+<li><p>Biểu đồ này cho thấy tổng hóa đơn trung bình (total_bill) theo từng ngày trong tuần. Các thanh đại diện cho giá trị trung bình của từng nhóm.</p></li>
+</ul>
+</section>
+<section id="cac-bieu-do-nang-cao">
+<h2>6.3 Các biểu đồ nâng cao<a class="headerlink" href="#cac-bieu-do-nang-cao" title="Permalink to this heading">#</a></h2>
+<p><strong>6.3.1 Biểu đồ ma trận tương quan (Heatmap)</strong>
+Dùng để trực quan hóa mối tương quan giữa các biến số.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">tips</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;tips&quot;</span><span class="p">)</span>
+
+<span class="n">numeric_tips</span> <span class="o">=</span> <span class="n">tips</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s1">&#39;number&#39;</span><span class="p">)</span>
+
+<span class="n">correlation</span> <span class="o">=</span> <span class="n">numeric_tips</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">correlation</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.2f&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Correlation Heatmap&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c752f26d54131f5e84b224862bebfa46083e8b0d70baf896bcdba567e2b22783.png" src="_images/c752f26d54131f5e84b224862bebfa46083e8b0d70baf896bcdba567e2b22783.png" />
+</div>
+</div>
+<p><strong>Chú thích:</strong></p>
+<ul class="simple">
+<li><p>Biểu đồ này hiển thị mối quan hệ tuyến tính giữa các cặp biến số trong dữ liệu. Giá trị gần 1 hoặc -1 cho thấy mối tương quan mạnh, trong khi giá trị gần 0 cho thấy mối tương quan yếu.</p></li>
+</ul>
+<p><strong>6.3.2 Biểu đồ ghép (Pair Plot)</strong>
+Hiển thị mối quan hệ giữa tất cả các cặp biến.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">tips</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;pastel&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/82b85b63bd677c8b92626e960b31d04103501a02f910e859ae93628d38cd8c17.png" src="_images/82b85b63bd677c8b92626e960b31d04103501a02f910e859ae93628d38cd8c17.png" />
+</div>
+</div>
+<p><strong>Chú thích:</strong></p>
+<ul class="simple">
+<li><p>Mỗi ô trong biểu đồ đại diện cho một cặp biến số. Đường chéo chính chứa các biểu đồ phân phối, còn các ô khác là các biểu đồ tán xạ giữa hai biến.</p></li>
+</ul>
+<p><strong>6.3.3 Biểu đồ phân phối dạng khớp (Joint Plot)</strong>
+Hiển thị mối quan hệ giữa hai biến cùng với biểu đồ phân phối của chúng.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;tip&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;reg&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;purple&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a30d181f6d3a723fccbfcce11c60451f359cd4a7b4d79d1314301ec8bcd9efe2.png" src="_images/a30d181f6d3a723fccbfcce11c60451f359cd4a7b4d79d1314301ec8bcd9efe2.png" />
+</div>
+</div>
+<p><strong>Chú thích:</strong></p>
+<ul class="simple">
+<li><p>Biểu đồ này không chỉ hiển thị mối quan hệ giữa hai biến mà còn hiển thị các phân phối biên (marginal distributions). Đường hồi quy (regression) chỉ ra xu hướng tổng quát.</p></li>
+</ul>
+</section>
+<section id="tuy-chinh-va-cai-dat-giao-dien">
+<h2>6.4 Tùy chỉnh và cài đặt giao diện<a class="headerlink" href="#tuy-chinh-va-cai-dat-giao-dien" title="Permalink to this heading">#</a></h2>
+<p><strong>6.4.1 Tùy chỉnh màu sắc</strong>
+Seaborn cung cấp các bảng màu sẵn có.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_palette</span><span class="p">(</span><span class="s2">&quot;dark&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;tip&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a0f64f7fe2db9bb2bea4bb5883cb9d71beca1405319d14ed8de53af949d5f48d.png" src="_images/a0f64f7fe2db9bb2bea4bb5883cb9d71beca1405319d14ed8de53af949d5f48d.png" />
+</div>
+</div>
+<p><strong>6.4.2 Thay đổi phong cách</strong>
+Bạn có thể thay đổi phong cách để biểu đồ trông chuyên nghiệp hơn.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d4a3d95ea0deed13ad30ed8b25ed1ebb1e2aee69b2464451cc90bbc9df74cc14.png" src="_images/d4a3d95ea0deed13ad30ed8b25ed1ebb1e2aee69b2464451cc90bbc9df74cc14.png" />
+</div>
+</div>
+<p><strong>6.4.3 Điều chỉnh kích thước biểu đồ</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7e4ddeb2613f4f2fdc397b91f40244c5c8d30d59bf19ebe7fe08b2b563c922fb.png" src="_images/7e4ddeb2613f4f2fdc397b91f40244c5c8d30d59bf19ebe7fe08b2b563c922fb.png" />
+</div>
+</div>
+</section>
+<section id="luu-bieu-do">
+<h2>6.5 Lưu biểu đồ<a class="headerlink" href="#luu-bieu-do" title="Permalink to this heading">#</a></h2>
+<p>Seaborn hoạt động trên nền Matplotlib, nên bạn có thể lưu biểu đồ giống như Matplotlib.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;tip&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;scatter_plot.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9c80f05d426e32a80653da05d572cdabd197a1ef80ca1824628c578eda2ba369.png" src="_images/9c80f05d426e32a80653da05d572cdabd197a1ef80ca1824628c578eda2ba369.png" />
+</div>
+</div>
+</section>
+<section id="thuc-hanh">
+<h2>6.6 Thực hành<a class="headerlink" href="#thuc-hanh" title="Permalink to this heading">#</a></h2>
+<p><strong>Bài tập 1:</strong>
+Sử dụng tập dữ liệu tips để tạo:</p>
+<ul class="simple">
+<li><p>Biểu đồ phân phối với sns.histplot.</p></li>
+<li><p>Biểu đồ hộp nhóm theo day.</p></li>
+</ul>
+<p><strong>Bài tập 2:</strong>
+Tải dữ liệu mẫu iris và tạo:</p>
+<ul class="simple">
+<li><p>Biểu đồ ghép (Pair Plot) với sns.pairplot.</p></li>
+<li><p>Biểu đồ nhiệt mối tương quan giữa các biến.</p></li>
+</ul>
+<p><strong>Bài tập 3:</strong>
+Với một tập dữ liệu của riêng bạn, hãy:</p>
+<ul class="simple">
+<li><p>Tạo biểu đồ thanh hiển thị giá trị trung bình của một biến theo nhóm.</p></li>
+<li><p>Tùy chỉnh màu sắc và phong cách biểu đồ.</p></li>
+</ul>
+</section>
+<section id="tong-ket-chuong-6">
+<h2>6.7 Tổng kết chương 6<a class="headerlink" href="#tong-ket-chuong-6" title="Permalink to this heading">#</a></h2>
+<p><strong>Nội dung</strong>:Trong chương 6 đã cung cấp cách sử dụng Seaborn để trực quan hóa dữ liệu một cách đơn giản nhưng chuyên nghiệp. Trong chương 7 bạn sẽ học cách làm việc với Plotly để tạo các biểu đồ tương tác mạnh mẽ.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="chapter5.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chương 5: Trực quan hóa Dữ liệu với Matplotlib</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="chapter7.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chương 7: Trực quan hóa Dữ liệu với Plotly</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#truc-quan-hoa-du-lieu-voi-seaborn">Trực quan hóa Dữ liệu với Seaborn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gioi-thieu-ve-seaborn">6.1 Giới thiệu về Seaborn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-bieu-do-co-ban-voi-seaborn">6.2 Các biểu đồ cơ bản với Seaborn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-bieu-do-nang-cao">6.3 Các biểu đồ nâng cao</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuy-chinh-va-cai-dat-giao-dien">6.4 Tùy chỉnh và cài đặt giao diện</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#luu-bieu-do">6.5 Lưu biểu đồ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thuc-hanh">6.6 Thực hành</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tong-ket-chuong-6">6.7 Tổng kết chương 6</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

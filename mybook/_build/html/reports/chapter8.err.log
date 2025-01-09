@@ -1,0 +1,292 @@
+Traceback (most recent call last):
+  File "C:\Users\herry\Anaconda3\Lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\herry\Anaconda3\Lib\site-packages\nbclient\client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\herry\Anaconda3\Lib\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\herry\Anaconda3\Lib\asyncio\base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\herry\Anaconda3\Lib\site-packages\nbclient\client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\herry\Anaconda3\Lib\site-packages\nbclient\client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\herry\Anaconda3\Lib\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import seaborn as sns
+import matplotlib.pyplot as plt
+from IPython.display import Image
+
+# Tải dữ liệu và tạo bảng pivot
+data = sns.load_dataset("flights")
+pivot_table = data.pivot(index="month", columns="year", values="passengers")
+
+# Tạo heatmap
+sns.heatmap(pivot_table, annot=True, fmt="d", cmap="YlGnBu")
+plt.title("Heatmap Số lượng hành khách theo năm và tháng")
+
+# Lưu biểu đồ dưới dạng hình ảnh
+plt.savefig("chart.png")
+
+# Hiển thị ảnh đã lưu
+Image("chart.png")
+
+------------------
+
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mImportError[0m                               Traceback (most recent call last)
+Cell [1;32mIn[2], line 1[0m
+[1;32m----> 1[0m [38;5;28;01mimport[39;00m [38;5;21;01mseaborn[39;00m [38;5;28;01mas[39;00m [38;5;21;01msns[39;00m
+[0;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpyplot[39;00m [38;5;28;01mas[39;00m [38;5;21;01mplt[39;00m
+[0;32m      3[0m [38;5;28;01mfrom[39;00m [38;5;21;01mIPython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdisplay[39;00m [38;5;28;01mimport[39;00m Image
+
+File [1;32m~\anaconda3\Lib\site-packages\seaborn\__init__.py:2[0m
+[0;32m      1[0m [38;5;66;03m# Import seaborn objects[39;00m
+[1;32m----> 2[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01mrcmod[39;00m [38;5;28;01mimport[39;00m [38;5;241m*[39m  [38;5;66;03m# noqa: F401,F403[39;00m
+[0;32m      3[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01mutils[39;00m [38;5;28;01mimport[39;00m [38;5;241m*[39m  [38;5;66;03m# noqa: F401,F403[39;00m
+[0;32m      4[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01mpalettes[39;00m [38;5;28;01mimport[39;00m [38;5;241m*[39m  [38;5;66;03m# noqa: F401,F403[39;00m
+
+File [1;32m~\anaconda3\Lib\site-packages\seaborn\rcmod.py:5[0m
+[0;32m      3[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m [38;5;28;01mas[39;00m [38;5;21;01mmpl[39;00m
+[0;32m      4[0m [38;5;28;01mfrom[39;00m [38;5;21;01mcycler[39;00m [38;5;28;01mimport[39;00m cycler
+[1;32m----> 5[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m [38;5;28;01mimport[39;00m palettes
+[0;32m      8[0m __all__ [38;5;241m=[39m [[38;5;124m"[39m[38;5;124mset_theme[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mset[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mreset_defaults[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mreset_orig[39m[38;5;124m"[39m,
+[0;32m      9[0m            [38;5;124m"[39m[38;5;124maxes_style[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mset_style[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mplotting_context[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mset_context[39m[38;5;124m"[39m,
+[0;32m     10[0m            [38;5;124m"[39m[38;5;124mset_palette[39m[38;5;124m"[39m]
+[0;32m     13[0m _style_keys [38;5;241m=[39m [
+[0;32m     14[0m 
+[0;32m     15[0m     [38;5;124m"[39m[38;5;124maxes.facecolor[39m[38;5;124m"[39m,
+[1;32m   (...)[0m
+[0;32m     50[0m 
+[0;32m     51[0m ]
+
+File [1;32m~\anaconda3\Lib\site-packages\seaborn\palettes.py:9[0m
+[0;32m      5[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m [38;5;28;01mas[39;00m [38;5;21;01mmpl[39;00m
+[0;32m      7[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01mexternal[39;00m [38;5;28;01mimport[39;00m husl
+[1;32m----> 9[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01mutils[39;00m [38;5;28;01mimport[39;00m desaturate, get_color_cycle
+[0;32m     10[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01mcolors[39;00m [38;5;28;01mimport[39;00m xkcd_rgb, crayons
+[0;32m     11[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m_compat[39;00m [38;5;28;01mimport[39;00m get_colormap
+
+File [1;32m~\anaconda3\Lib\site-packages\seaborn\utils.py:11[0m
+[0;32m      8[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtypes[39;00m [38;5;28;01mimport[39;00m ModuleType
+[0;32m     10[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
+[1;32m---> 11[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mpd[39;00m
+[0;32m     12[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m [38;5;28;01mas[39;00m [38;5;21;01mmpl[39;00m
+[0;32m     13[0m [38;5;28;01mfrom[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcolors[39;00m [38;5;28;01mimport[39;00m to_rgb
+
+File [1;32m~\anaconda3\Lib\site-packages\pandas\__init__.py:49[0m
+[0;32m     46[0m [38;5;66;03m# let init-time option registration happen[39;00m
+[0;32m     47[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mconfig_init[39;00m  [38;5;66;03m# pyright: ignore[reportUnusedImport] # noqa: F401[39;00m
+[1;32m---> 49[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mapi[39;00m [38;5;28;01mimport[39;00m (
+[0;32m     50[0m     [38;5;66;03m# dtype[39;00m
+[0;32m     51[0m     ArrowDtype,
+[0;32m     52[0m     Int8Dtype,
+[0;32m     53[0m     Int16Dtype,
+[0;32m     54[0m     Int32Dtype,
+[0;32m     55[0m     Int64Dtype,
+[0;32m     56[0m     UInt8Dtype,
+[0;32m     57[0m     UInt16Dtype,
+[0;32m     58[0m     UInt32Dtype,
+[0;32m     59[0m     UInt64Dtype,
+[0;32m     60[0m     Float32Dtype,
+[0;32m     61[0m     Float64Dtype,
+[0;32m     62[0m     CategoricalDtype,
+[0;32m     63[0m     PeriodDtype,
+[0;32m     64[0m     IntervalDtype,
+[0;32m     65[0m     DatetimeTZDtype,
+[0;32m     66[0m     StringDtype,
+[0;32m     67[0m     BooleanDtype,
+[0;32m     68[0m     [38;5;66;03m# missing[39;00m
+[0;32m     69[0m     NA,
+[0;32m     70[0m     isna,
+[0;32m     71[0m     isnull,
+[0;32m     72[0m     notna,
+[0;32m     73[0m     notnull,
+[0;32m     74[0m     [38;5;66;03m# indexes[39;00m
+[0;32m     75[0m     Index,
+[0;32m     76[0m     CategoricalIndex,
+[0;32m     77[0m     RangeIndex,
+[0;32m     78[0m     MultiIndex,
+[0;32m     79[0m     IntervalIndex,
+[0;32m     80[0m     TimedeltaIndex,
+[0;32m     81[0m     DatetimeIndex,
+[0;32m     82[0m     PeriodIndex,
+[0;32m     83[0m     IndexSlice,
+[0;32m     84[0m     [38;5;66;03m# tseries[39;00m
+[0;32m     85[0m     NaT,
+[0;32m     86[0m     Period,
+[0;32m     87[0m     period_range,
+[0;32m     88[0m     Timedelta,
+[0;32m     89[0m     timedelta_range,
+[0;32m     90[0m     Timestamp,
+[0;32m     91[0m     date_range,
+[0;32m     92[0m     bdate_range,
+[0;32m     93[0m     Interval,
+[0;32m     94[0m     interval_range,
+[0;32m     95[0m     DateOffset,
+[0;32m     96[0m     [38;5;66;03m# conversion[39;00m
+[0;32m     97[0m     to_numeric,
+[0;32m     98[0m     to_datetime,
+[0;32m     99[0m     to_timedelta,
+[0;32m    100[0m     [38;5;66;03m# misc[39;00m
+[0;32m    101[0m     Flags,
+[0;32m    102[0m     Grouper,
+[0;32m    103[0m     factorize,
+[0;32m    104[0m     unique,
+[0;32m    105[0m     value_counts,
+[0;32m    106[0m     NamedAgg,
+[0;32m    107[0m     array,
+[0;32m    108[0m     Categorical,
+[0;32m    109[0m     set_eng_float_format,
+[0;32m    110[0m     Series,
+[0;32m    111[0m     DataFrame,
+[0;32m    112[0m )
+[0;32m    114[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdtypes[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdtypes[39;00m [38;5;28;01mimport[39;00m SparseDtype
+[0;32m    116[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mtseries[39;00m[38;5;21;01m.[39;00m[38;5;21;01mapi[39;00m [38;5;28;01mimport[39;00m infer_freq
+
+File [1;32m~\anaconda3\Lib\site-packages\pandas\core\api.py:47[0m
+[0;32m     45[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mconstruction[39;00m [38;5;28;01mimport[39;00m array
+[0;32m     46[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mflags[39;00m [38;5;28;01mimport[39;00m Flags
+[1;32m---> 47[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mgroupby[39;00m [38;5;28;01mimport[39;00m (
+[0;32m     48[0m     Grouper,
+[0;32m     49[0m     NamedAgg,
+[0;32m     50[0m )
+[0;32m     51[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mindexes[39;00m[38;5;21;01m.[39;00m[38;5;21;01mapi[39;00m [38;5;28;01mimport[39;00m (
+[0;32m     52[0m     CategoricalIndex,
+[0;32m     53[0m     DatetimeIndex,
+[1;32m   (...)[0m
+[0;32m     59[0m     TimedeltaIndex,
+[0;32m     60[0m )
+[0;32m     61[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mindexes[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdatetimes[39;00m [38;5;28;01mimport[39;00m (
+[0;32m     62[0m     bdate_range,
+[0;32m     63[0m     date_range,
+[0;32m     64[0m )
+
+File [1;32m~\anaconda3\Lib\site-packages\pandas\core\groupby\__init__.py:1[0m
+[1;32m----> 1[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mgroupby[39;00m[38;5;21;01m.[39;00m[38;5;21;01mgeneric[39;00m [38;5;28;01mimport[39;00m (
+[0;32m      2[0m     DataFrameGroupBy,
+[0;32m      3[0m     NamedAgg,
+[0;32m      4[0m     SeriesGroupBy,
+[0;32m      5[0m )
+[0;32m      6[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mgroupby[39;00m[38;5;21;01m.[39;00m[38;5;21;01mgroupby[39;00m [38;5;28;01mimport[39;00m GroupBy
+[0;32m      7[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mgroupby[39;00m[38;5;21;01m.[39;00m[38;5;21;01mgrouper[39;00m [38;5;28;01mimport[39;00m Grouper
+
+File [1;32m~\anaconda3\Lib\site-packages\pandas\core\groupby\generic.py:68[0m
+[0;32m     60[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mapply[39;00m [38;5;28;01mimport[39;00m (
+[0;32m     61[0m     GroupByApply,
+[0;32m     62[0m     maybe_mangle_lambdas,
+[1;32m   (...)[0m
+[0;32m     65[0m     warn_alias_replacement,
+[0;32m     66[0m )
+[0;32m     67[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcommon[39;00m [38;5;28;01mas[39;00m [38;5;21;01mcom[39;00m
+[1;32m---> 68[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mframe[39;00m [38;5;28;01mimport[39;00m DataFrame
+[0;32m     69[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mgroupby[39;00m [38;5;28;01mimport[39;00m (
+[0;32m     70[0m     base,
+[0;32m     71[0m     ops,
+[0;32m     72[0m )
+[0;32m     73[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mgroupby[39;00m[38;5;21;01m.[39;00m[38;5;21;01mgroupby[39;00m [38;5;28;01mimport[39;00m (
+[0;32m     74[0m     GroupBy,
+[0;32m     75[0m     GroupByPlot,
+[1;32m   (...)[0m
+[0;32m     79[0m     _transform_template,
+[0;32m     80[0m )
+
+File [1;32m~\anaconda3\Lib\site-packages\pandas\core\frame.py:149[0m
+[0;32m    143[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01marrays[39;00m[38;5;21;01m.[39;00m[38;5;21;01msparse[39;00m [38;5;28;01mimport[39;00m SparseFrameAccessor
+[0;32m    144[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mconstruction[39;00m [38;5;28;01mimport[39;00m (
+[0;32m    145[0m     ensure_wrapped_if_datetimelike,
+[0;32m    146[0m     sanitize_array,
+[0;32m    147[0m     sanitize_masked_array,
+[0;32m    148[0m )
+[1;32m--> 149[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mgeneric[39;00m [38;5;28;01mimport[39;00m (
+[0;32m    150[0m     NDFrame,
+[0;32m    151[0m     make_doc,
+[0;32m    152[0m )
+[0;32m    153[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mindexers[39;00m [38;5;28;01mimport[39;00m check_key_length
+[0;32m    154[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mindexes[39;00m[38;5;21;01m.[39;00m[38;5;21;01mapi[39;00m [38;5;28;01mimport[39;00m (
+[0;32m    155[0m     DatetimeIndex,
+[0;32m    156[0m     Index,
+[1;32m   (...)[0m
+[0;32m    160[0m     ensure_index_from_sequences,
+[0;32m    161[0m )
+
+File [1;32m~\anaconda3\Lib\site-packages\pandas\core\generic.py:152[0m
+[0;32m    143[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdtypes[39;00m[38;5;21;01m.[39;00m[38;5;21;01minference[39;00m [38;5;28;01mimport[39;00m (
+[0;32m    144[0m     is_hashable,
+[0;32m    145[0m     is_nested_list_like,
+[0;32m    146[0m )
+[0;32m    147[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdtypes[39;00m[38;5;21;01m.[39;00m[38;5;21;01mmissing[39;00m [38;5;28;01mimport[39;00m (
+[0;32m    148[0m     isna,
+[0;32m    149[0m     notna,
+[0;32m    150[0m )
+[1;32m--> 152[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m [38;5;28;01mimport[39;00m (
+[0;32m    153[0m     algorithms [38;5;28;01mas[39;00m algos,
+[0;32m    154[0m     arraylike,
+[0;32m    155[0m     common,
+[0;32m    156[0m     indexing,
+[0;32m    157[0m     missing,
+[0;32m    158[0m     nanops,
+[0;32m    159[0m     sample,
+[0;32m    160[0m )
+[0;32m    161[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01marray_algos[39;00m[38;5;21;01m.[39;00m[38;5;21;01mreplace[39;00m [38;5;28;01mimport[39;00m should_use_regex
+[0;32m    162[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01marrays[39;00m [38;5;28;01mimport[39;00m ExtensionArray
+
+File [1;32m~\anaconda3\Lib\site-packages\pandas\core\indexing.py:79[0m
+[0;32m     69[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mconstruction[39;00m [38;5;28;01mimport[39;00m (
+[0;32m     70[0m     array [38;5;28;01mas[39;00m pd_array,
+[0;32m     71[0m     extract_array,
+[0;32m     72[0m )
+[0;32m     73[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mindexers[39;00m [38;5;28;01mimport[39;00m (
+[0;32m     74[0m     check_array_indexer,
+[0;32m     75[0m     is_list_like_indexer,
+[0;32m     76[0m     is_scalar_indexer,
+[0;32m     77[0m     length_of_indexer,
+[0;32m     78[0m )
+[1;32m---> 79[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mindexes[39;00m[38;5;21;01m.[39;00m[38;5;21;01mapi[39;00m [38;5;28;01mimport[39;00m (
+[0;32m     80[0m     Index,
+[0;32m     81[0m     MultiIndex,
+[0;32m     82[0m )
+[0;32m     84[0m [38;5;28;01mif[39;00m TYPE_CHECKING:
+[0;32m     85[0m     [38;5;28;01mfrom[39;00m [38;5;21;01mcollections[39;00m[38;5;21;01m.[39;00m[38;5;21;01mabc[39;00m [38;5;28;01mimport[39;00m (
+[0;32m     86[0m         Hashable,
+[0;32m     87[0m         Sequence,
+[0;32m     88[0m     )
+
+File [1;32m~\anaconda3\Lib\site-packages\pandas\core\indexes\api.py:20[0m
+[0;32m     17[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdtypes[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcast[39;00m [38;5;28;01mimport[39;00m find_common_type
+[0;32m     19[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01malgorithms[39;00m [38;5;28;01mimport[39;00m safe_sort
+[1;32m---> 20[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mindexes[39;00m[38;5;21;01m.[39;00m[38;5;21;01mbase[39;00m [38;5;28;01mimport[39;00m (
+[0;32m     21[0m     Index,
+[0;32m     22[0m     _new_Index,
+[0;32m     23[0m     ensure_index,
+[0;32m     24[0m     ensure_index_from_sequences,
+[0;32m     25[0m     get_unanimous_names,
+[0;32m     26[0m )
+[0;32m     27[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mindexes[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcategory[39;00m [38;5;28;01mimport[39;00m CategoricalIndex
+[0;32m     28[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mindexes[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdatetimes[39;00m [38;5;28;01mimport[39;00m DatetimeIndex
+
+File [1;32m~\anaconda3\Lib\site-packages\pandas\core\indexes\base.py:29[0m
+[0;32m     21[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
+[0;32m     23[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01m_config[39;00m [38;5;28;01mimport[39;00m (
+[0;32m     24[0m     get_option,
+[0;32m     25[0m     using_copy_on_write,
+[0;32m     26[0m     using_pyarrow_string_dtype,
+[0;32m     27[0m )
+[1;32m---> 29[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01m_libs[39;00m [38;5;28;01mimport[39;00m (
+[0;32m     30[0m     NaT,
+[0;32m     31[0m     algos [38;5;28;01mas[39;00m libalgos,
+[0;32m     32[0m     index [38;5;28;01mas[39;00m libindex,
+[0;32m     33[0m     lib,
+[0;32m     34[0m     writers,
+[0;32m     35[0m )
+[0;32m     36[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01m_libs[39;00m[38;5;21;01m.[39;00m[38;5;21;01minternals[39;00m [38;5;28;01mimport[39;00m BlockValuesRefs
+[0;32m     37[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m[38;5;21;01m.[39;00m[38;5;21;01m_libs[39;00m[38;5;21;01m.[39;00m[38;5;21;01mjoin[39;00m [38;5;28;01mas[39;00m [38;5;21;01mlibjoin[39;00m
+
+[1;31mImportError[0m: DLL load failed while importing writers: The paging file is too small for this operation to complete.
+
