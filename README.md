@@ -35,22 +35,6 @@
    ```bash
    python -m venv venv
    source venv/bin/activate  # Trên Windows: venv\Scripts\activate
-   pip install -r requirements.txt
-   ```
-
-3. Xây dựng Jupyter Book:
-   ```bash
-   jupyter-book build .
-   ```
-
-4. Mở file HTML kết quả trong thư mục `_build/html/`.
-
-## Đóng góp
-
-Nếu bạn muốn đóng góp vào dự án, vui lòng fork repository, tạo nhánh mới và gửi pull request. Mọi ý kiến và đề xuất đều được hoan nghênh!
-
-## Liên hệ
-
-- **Tác giả**: Trần Ngọc Hạnh
-- **Email**: [your-email@example.com](mailto:your-email@example.com)
+   pip install Hành
+- **Email**: [ngochanh17082000@gmail.com](mailto:ngochanh17082000@gmail.com)
 - **GitHub**: [TranNgocHanh](https://github.com/TranNgocHanh)
