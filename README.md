@@ -1,7 +1,7 @@
 # csn-da22tta-tranngochanh-jupyterbook
 - Process-report: Báo cáo tiến độ
 - Thesis: Về file văn bản của đồ án
-- JUPYTER BOOK : Sách của dự
+- JUPYTER BOOK : Sách của dự án
 # Mô tả đồ án
 Tên đề tài: TÌM HIỂU JUPYTER BOOK VÀ BIÊN SOẠN TÀI LIỆU HƯỚNG DẪN LẬP TRÌNH TRỰC QUAN HÓA DỮ LIỆU TRÊN PYTHON
 Giáo viên hướng dẫn: . Hà Thị Thúy Vi.
@@ -9,30 +9,29 @@ Giáo viên hướng dẫn: . Hà Thị Thúy Vi.
 - Sinh viên thực hiện: Trần Ngọc Hành - 110122219
 - Nội dung đề tài: TÌM HIỂU JUPYTER BOOK VÀ BIÊN SOẠN TÀI LIỆU HƯỚNG DẪN LẬP TRÌNH TRỰC QUAN HÓA DỮ LIỆU TRÊN PYTHON
 - Yêu cầu thực hiện:
-Tìm hiểu về Jupyter Book:
+# Tìm hiểu về Jupyter Book:
 - Cấu trúc của Jupyter Book.
 - Cách tạo nội dung với Markdown và Jupyter Notebook.
 - Xuất bản tài liệu dưới các định dạng như HTML, PDF.
-Biên soạn tài liệu hướng dẫn:
+# Biên soạn tài liệu hướng dẫn:
 - Tập trung vào lập trình trực quan hóa dữ liệu với Python.
 - Sử dụng các thư viện như Matplotlib, Seaborn, và Plotly.
 - Cung cấp ví dụ minh họa chi tiết.
-Tích hợp thực hành:
+# Tích hợp thực hành:
 - Bao gồm bài tập thực hành.
 - Hướng dẫn cách chạy mã trực tiếp trong Jupyter Notebook.
-Xuất bản tài liệu:
+# Xuất bản tài liệu:
 - Triển khai trên môi trường trực tuyến để người dùng truy cập dễ dàng.
 - Đảm bảo tài liệu có tính tương tác và dễ sử dụng.
-Kết quả đạt :
-Tài liệu hướng dẫn hoàn chỉnh:
+# Kết quả đạt được :
+## Tài liệu hướng dẫn hoàn chỉnh:
 - Bao gồm lý thuyết, ví dụ minh họa, và bài tập thực hành.
 - Được biên soạn dưới định dạng Jupyter Book.
-Tích hợp các thư viện phổ biến:
+## Tích hợp các thư viện phổ biến:
 - Matplotlib, Seaborn, và Plotly với các ví dụ cụ thể.
-Xuất bản và triển khai:
+# Xuất bản và triển khai:
 - Tài liệu được xuất bản trực tuyến và hỗ trợ xuất ra PDF.
 - Người dùng có thể thực hành trực tiếp thông qua Jupyter Notebook.
-![Ảnh minh họa dự án](https://www.python.org/static/community_logos/python-logo.png)
 # Cài đặt yêu cầu
 
 ## 1. Công cụ cần thiết
@@ -131,9 +130,6 @@ env\Scripts\activate     # Trên Windows
 
 ### Tham khảo thêm tài liệu Jupyter Book:
 - [Jupyter Book Documentation](https://jupyterbook.org/).
-## Liên Hệ
-- Gmail : 110122219@st.tvu.edu.vn
-- Zalo : 0387976507
 
 ## 3. Chạy thử Jupyter Book
 
