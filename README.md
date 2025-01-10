@@ -1,4 +1,4 @@
-# Jupyter Book: CSN DA22TTA - Tran Ngoc Hanh
+# Jupyter Book: CSN DA22TTA - Trần Ngọc Hành
 
 ## Giới thiệu
 
