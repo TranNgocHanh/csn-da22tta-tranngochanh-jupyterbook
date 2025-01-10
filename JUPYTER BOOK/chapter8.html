@@ -1,0 +1,692 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Chương 8: Các Kỹ thuật Trực quan hóa Nâng cao &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter8';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chương 9: Tích hợp Trực quan hóa vào Bài tập" href="chapter9.html" />
+    <link rel="prev" title="Chương 7: Trực quan hóa Dữ liệu với Plotly" href="chapter7.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="My sample book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Trực quan hóa dữ liệu trong Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="thu_muc.html">Mục lục</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter1.html">Chương 1: Giới thiệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter2.html">Chương 2: Cài đặt Môi Trường</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter3.html">Chương 3: Giới thiệu về Dữ liệu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter4.html">Chương 4: Thống kê mô tả</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter5.html">Chương 5: Trực quan hóa Dữ liệu với Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter6.html">Chương 6: Trực quan hóa Dữ liệu với Seaborn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter7.html">Chương 7: Trực quan hóa Dữ liệu với Plotly</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chương 8: Các Kỹ thuật Trực quan hóa Nâng cao</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter9.html">Chương 9: Tích hợp Trực quan hóa vào Bài tập</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter10.html">Chương 10: Tài nguyên và Tài liệu tham khảo</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter8.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/chapter8.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chương 8: Các Kỹ thuật Trực quan hóa Nâng cao</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-ky-thuat-truc-quan-hoa-nang-cao">Các Kỹ thuật Trực quan hóa Nâng cao</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gioi-thieu-ve-ky-thuat-truc-quan-hoa-nang-cao">8.1 Giới thiệu về Kỹ thuật Trực quan hóa Nâng cao</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#truc-quan-hoa-du-lieu-3d">8.2 Trực quan hóa Dữ liệu 3D</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heatmaps-va-bieu-do-ma-tran">8.3 Heatmaps và Biểu đồ Ma trận</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-graphs-bieu-do-mang">8.4 Network Graphs (Biểu đồ Mạng)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuy-chinh-va-ket-hop-bieu-do">8.5 Tùy chỉnh và Kết hợp Biểu đồ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#luu-tru-va-chia-se-bieu-do">8.6 Lưu trữ và Chia sẻ Biểu đồ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bai-tap-thuc-hanh">8.7 Bài tập Thực hành</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tong-ket-chuong-8">8.8 Tổng kết chương 8</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chuong-8-cac-ky-thuat-truc-quan-hoa-nang-cao">
+<h1>Chương 8: Các Kỹ thuật Trực quan hóa Nâng cao<a class="headerlink" href="#chuong-8-cac-ky-thuat-truc-quan-hoa-nang-cao" title="Permalink to this heading">#</a></h1>
+<section id="cac-ky-thuat-truc-quan-hoa-nang-cao">
+<h2>Các Kỹ thuật Trực quan hóa Nâng cao<a class="headerlink" href="#cac-ky-thuat-truc-quan-hoa-nang-cao" title="Permalink to this heading">#</a></h2>
+<p>Chương này sẽ giúp bạn tìm hiểu các kỹ thuật trực quan hóa nâng cao, cho phép khai thác sâu hơn các công cụ và phương pháp để phân tích và hiển thị dữ liệu phức tạp. Nội dung của chương được chia thành các phần sau:</p>
+</section>
+<section id="gioi-thieu-ve-ky-thuat-truc-quan-hoa-nang-cao">
+<h2>8.1 Giới thiệu về Kỹ thuật Trực quan hóa Nâng cao<a class="headerlink" href="#gioi-thieu-ve-ky-thuat-truc-quan-hoa-nang-cao" title="Permalink to this heading">#</a></h2>
+<p><strong>Mục tiêu</strong>: Hiểu lý do và bối cảnh sử dụng các kỹ thuật trực quan hóa nâng cao.</p>
+<p><strong>Lý thuyết</strong>:</p>
+<ul class="simple">
+<li><p>Trực quan hóa nâng cao giúp ta phân tích các dữ liệu lớn và phức tạp, từ đó nhận diện các mối quan hệ, xu hướng hoặc bất thường mà các phương pháp phân tích truyền thống không thể làm được.</p></li>
+<li><p>Các công cụ và thư viện như Plotly, Seaborn, Bokeh, Dash rất thích hợp cho việc tạo ra các đồ thị nâng cao với khả năng tương tác và tính linh hoạt cao.</p></li>
+<li><p>Các loại đồ thị nâng cao bao gồm các đồ thị 3D, Heatmaps, và Network Graphs. Những công cụ này giúp hiển thị các mối quan hệ trong dữ liệu từ nhiều góc độ khác nhau.</p></li>
+</ul>
+</section>
+<section id="truc-quan-hoa-du-lieu-3d">
+<h2>8.2 Trực quan hóa Dữ liệu 3D<a class="headerlink" href="#truc-quan-hoa-du-lieu-3d" title="Permalink to this heading">#</a></h2>
+<p><strong>Ứng dụng</strong>:Biểu đồ 3D giúp hiển thị các mối quan hệ giữa ba hoặc nhiều biến số. Đây là một công cụ quan trọng khi bạn cần phân tích các dữ liệu không gian hoặc mối quan hệ đa chiều.</p>
+<p><strong>Công cụ sử dụng</strong>: Plotly, Matplotlib (Axes 3D).</p>
+<p><strong>Ví dụ mã code:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<span class="n">z</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter3d</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;markers&#39;</span><span class="p">,</span> 
+                                   <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="n">colorscale</span><span class="o">=</span><span class="s1">&#39;Viridis&#39;</span><span class="p">))])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Biểu đồ 3D&quot;</span><span class="p">,</span> <span class="n">scene</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">xaxis_title</span><span class="o">=</span><span class="s2">&quot;X-axis&quot;</span><span class="p">,</span> <span class="n">yaxis_title</span><span class="o">=</span><span class="s2">&quot;Y-axis&quot;</span><span class="p">,</span> <span class="n">zaxis_title</span><span class="o">=</span><span class="s2">&quot;Z-axis&quot;</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">write_image</span><span class="p">(</span><span class="s2">&quot;chart.png&quot;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;chart.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0e4b1373e77b0bc38379be571eb3ffbf68ab434a2b0b29714a06e3049afa4a31.png" src="_images/0e4b1373e77b0bc38379be571eb3ffbf68ab434a2b0b29714a06e3049afa4a31.png" />
+</div>
+</div>
+<section id="heatmaps-va-bieu-do-ma-tran">
+<h3>8.3 Heatmaps và Biểu đồ Ma trận<a class="headerlink" href="#heatmaps-va-bieu-do-ma-tran" title="Permalink to this heading">#</a></h3>
+<p><strong>Ứng dụng</strong>:  Heatmaps rất hữu ích trong việc phân tích mối tương quan giữa các biến số trong dữ liệu ma trận, ví dụ như các dữ liệu hành vi người dùng hoặc số liệu kinh tế theo tháng, năm.</p>
+<p><strong>Công cụ sử dụng</strong>: Seaborn, Plotly.</p>
+<p><strong>Ví dụ mã code</strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+
+<span class="c1"># Tải dữ liệu và tạo bảng pivot</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;flights&quot;</span><span class="p">)</span>
+<span class="n">pivot_table</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s2">&quot;month&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">&quot;passengers&quot;</span><span class="p">)</span>
+
+<span class="c1"># Tạo heatmap</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>  <span class="c1"># Tạo kích thước cho hình vẽ</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">pivot_table</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;YlGnBu&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Heatmap Số lượng hành khách theo năm và tháng&quot;</span><span class="p">)</span>
+
+<span class="c1"># Lưu biểu đồ dưới dạng hình ảnh</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;chart.png&quot;</span><span class="p">)</span>
+
+<span class="c1"># Hiển thị ảnh đã lưu</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>  <span class="c1"># Đóng biểu đồ sau khi lưu để không bị hiển thị lại</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;chart.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/6c5a8eeb9c1d8b12608da675216be2d7745016f2a6576ffb4056636f225fdd95.png" src="_images/6c5a8eeb9c1d8b12608da675216be2d7745016f2a6576ffb4056636f225fdd95.png" />
+</div>
+</div>
+<p><strong>Chú thích:</strong></p>
+<ul class="simple">
+<li><p>sns.heatmap tạo một heatmap với bảng màu được chọn, cùng với giá trị số hành khách hiển thị trên từng ô.</p></li>
+<li><p>plt.figure(figsize=(10, 6)) thay đổi kích thước của biểu đồ.</p></li>
+<li><p>plt.title(“Heatmap…”) tạo tiêu đề cho biểu đồ.</p></li>
+</ul>
+</section>
+</section>
+<section id="network-graphs-bieu-do-mang">
+<h2>8.4 Network Graphs (Biểu đồ Mạng)<a class="headerlink" href="#network-graphs-bieu-do-mang" title="Permalink to this heading">#</a></h2>
+<p><strong>Ứng dụng</strong>: Biểu đồ mạng dùng để thể hiện các mối liên kết hoặc mạng lưới, ví dụ như mối quan hệ trong mạng xã hội hoặc trong các hệ thống dữ liệu phức tạp.</p>
+<p><strong>Công cụ sử dụng</strong>: NetworkX, Plotly.</p>
+<p><strong>Ví dụ mã code</strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">karate_club_graph</span><span class="p">()</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Network Graph - Karate Club&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">write_image</span><span class="p">(</span><span class="s2">&quot;chart.png&quot;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;chart.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0e4b1373e77b0bc38379be571eb3ffbf68ab434a2b0b29714a06e3049afa4a31.png" src="_images/0e4b1373e77b0bc38379be571eb3ffbf68ab434a2b0b29714a06e3049afa4a31.png" />
+<img alt="_images/c0e4e63c2452598e8f0fc06818461c6b2ed068cc08be2e75ff029d36ab2bef9e.png" src="_images/c0e4e63c2452598e8f0fc06818461c6b2ed068cc08be2e75ff029d36ab2bef9e.png" />
+</div>
+</div>
+<p><strong>Chú thích</strong>:</p>
+<ul class="simple">
+<li><p>nx.draw() dùng để vẽ đồ thị. Các tham số điều chỉnh giao diện của đồ thị:</p></li>
+<li><p>with_labels=True giúp hiển thị các nhãn của các nút.</p></li>
+<li><p>node_color=’skyblue’ màu sắc của các nút.</p></li>
+<li><p>node_size=600 điều chỉnh kích thước của các nút.</p></li>
+<li><p>edge_color=’gray’ xác định màu sắc của các cạnh nối giữa các nút.</p></li>
+</ul>
+</section>
+<section id="tuy-chinh-va-ket-hop-bieu-do">
+<h2>8.5 Tùy chỉnh và Kết hợp Biểu đồ<a class="headerlink" href="#tuy-chinh-va-ket-hop-bieu-do" title="Permalink to this heading">#</a></h2>
+<p><strong>Ứng dụng</strong>: Kết hợp các loại biểu đồ khác nhau trong cùng một hình giúp bạn phân tích dữ liệu từ nhiều góc độ. Ví dụ: kết hợp biểu đồ đường và biểu đồ cột để minh họa dữ liệu theo danh mục và theo thời gian</p>
+<p><strong>Ví dụ mã code</strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Bar&quot;</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;lines+markers&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Line&quot;</span><span class="p">))</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Kết hợp Biểu đồ&quot;</span><span class="p">,</span> <span class="n">xaxis_title</span><span class="o">=</span><span class="s2">&quot;Category&quot;</span><span class="p">,</span> <span class="n">yaxis_title</span><span class="o">=</span><span class="s2">&quot;Value&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">write_image</span><span class="p">(</span><span class="s2">&quot;chart.png&quot;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;chart.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c85c33528dc6029522fd8aa356c981c1022a52abe00ef82eee048a8783ad050b.png" src="_images/c85c33528dc6029522fd8aa356c981c1022a52abe00ef82eee048a8783ad050b.png" />
+</div>
+</div>
+<p><strong>Chú thích</strong></p>
+<ul class="simple">
+<li><p>fig = go.Figure() tạo một đối tượng đồ thị mới để chứa các yếu tố đồ họa.</p></li>
+<li><p>fig.add_trace(go.Bar(x=[“A”, “B”, “C”], y=[10, 20, 15], name=”Bar”)): Thêm một biểu đồ cột, nơi các danh mục “A”, “B”, “C” sẽ có giá trị tương ứng là 10, 20 và 15.</p></li>
+<li><p>name=”Bar” giúp gán tên cho biểu đồ cột trong phần chú thích.</p></li>
+<li><p>fig.add_trace(go.Scatter(x=[“A”, “B”, “C”], y=[5, 25, 10], mode=”lines+markers”, name=”Line”)): Thêm một biểu đồ đường, với các điểm dữ liệu tại “A”, “B”, “C” có giá trị 5, 25, 10 tương ứng. Các điểm này sẽ được nối với nhau thành một đường, và các điểm cũng được đánh dấu bằng các ký tự (markers).</p></li>
+<li><p>mode=”lines+markers” kết hợp cả đường và dấu chấm.</p></li>
+</ul>
+</section>
+<section id="luu-tru-va-chia-se-bieu-do">
+<h2>8.6 Lưu trữ và Chia sẻ Biểu đồ<a class="headerlink" href="#luu-tru-va-chia-se-bieu-do" title="Permalink to this heading">#</a></h2>
+<p><strong>Lưu trữ biểu đồ</strong>: Biểu đồ có thể được lưu dưới các định dạng phổ biến như PNG, HTML, PDF hoặc SVG, giúp bạn dễ dàng chia sẻ hoặc nhúng vào các báo cáo, trang web, hoặc tài liệu.</p>
+<p><strong>Chia sẻ trên nền tảng web</strong>:</p>
+<p>Plotly cung cấp khả năng chia sẻ biểu đồ trực tuyến, cho phép nhúng biểu đồ vào các website hoặc chia sẻ qua các nền tảng như Dash.</p>
+</section>
+<section id="bai-tap-thuc-hanh">
+<h2>8.7 Bài tập Thực hành<a class="headerlink" href="#bai-tap-thuc-hanh" title="Permalink to this heading">#</a></h2>
+<p><strong>Bài tập 1</strong>: Tạo một biểu đồ 3D minh họa dữ liệu thời gian.</p>
+<p><strong>Bài tập 2</strong>: Tạo heatmap thể hiện mối tương quan giữa các biến số trong bộ dữ liệu.</p>
+<p><strong>Bài tập 3</strong>: Xây dựng một Dashboard nhỏ kết hợp hai biểu đồ (cột và đường).</p>
+</section>
+<section id="tong-ket-chuong-8">
+<h2>8.8 Tổng kết chương 8<a class="headerlink" href="#tong-ket-chuong-8" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Nội dung</strong>:Trong chương 8 này, chúng ta đã khám phá các kỹ thuật trực quan hóa nâng cao, bao gồm biểu đồ 3D, heatmaps và biểu đồ mạng, cùng với cách tùy chỉnh và kết hợp các biểu đồ để phân tích dữ liệu phức tạp. Chương 9 sẽ tiếp tục với việc tích hợp các kỹ thuật này vào các bài tập thực tế, giúp bạn hiểu rõ hơn cách áp dụng trực quan hóa vào các bài toán thực tế.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="chapter7.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chương 7: Trực quan hóa Dữ liệu với Plotly</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="chapter9.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chương 9: Tích hợp Trực quan hóa vào Bài tập</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cac-ky-thuat-truc-quan-hoa-nang-cao">Các Kỹ thuật Trực quan hóa Nâng cao</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gioi-thieu-ve-ky-thuat-truc-quan-hoa-nang-cao">8.1 Giới thiệu về Kỹ thuật Trực quan hóa Nâng cao</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#truc-quan-hoa-du-lieu-3d">8.2 Trực quan hóa Dữ liệu 3D</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heatmaps-va-bieu-do-ma-tran">8.3 Heatmaps và Biểu đồ Ma trận</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-graphs-bieu-do-mang">8.4 Network Graphs (Biểu đồ Mạng)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuy-chinh-va-ket-hop-bieu-do">8.5 Tùy chỉnh và Kết hợp Biểu đồ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#luu-tru-va-chia-se-bieu-do">8.6 Lưu trữ và Chia sẻ Biểu đồ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bai-tap-thuc-hanh">8.7 Bài tập Thực hành</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tong-ket-chuong-8">8.8 Tổng kết chương 8</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
