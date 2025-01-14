@@ -1,6 +1,6 @@
 # csn-da22tta-tranngochanh-jupyterbook
 - Process-report: Báo cáo tiến độ
-- Thesis: Về file văn bản của đồ án
+- Thesis: Về file văn bản của đồ án, Poster và Powerpoint
 - JUPYTER BOOK : Sách của dự án
 ## Mô tả đồ án
 Tên đề tài: TÌM HIỂU JUPYTER BOOK VÀ BIÊN SOẠN TÀI LIỆU HƯỚNG DẪN LẬP TRÌNH TRỰC QUAN HÓA DỮ LIỆU TRÊN PYTHON
